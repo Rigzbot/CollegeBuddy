@@ -10,7 +10,6 @@ import com.example.collegebuddy.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class BottomSheetFragment: BottomSheetDialogFragment() {
 
     companion object {

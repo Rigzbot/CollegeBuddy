@@ -4,31 +4,27 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.example.collegebuddy.databinding.FragmentDashboardBinding
+import com.example.collegebuddy.databinding.FragmentNotesBinding
 import com.example.collegebuddy.util.BottomSheetFragment
-import com.example.collegebuddy.viewModels.DashboardViewModel
-import com.example.collegebuddy.viewModels.NotificationsViewModel
+import com.example.collegebuddy.viewModels.NotesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DashboardFragment : Fragment() {
+class NotesFragment : Fragment() {
 
-    private var _binding: FragmentDashboardBinding? = null
+    private var _binding: FragmentNotesBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: DashboardViewModel by viewModels()
+    private val viewModel: NotesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentDashboardBinding.inflate(inflater)
+        _binding = FragmentNotesBinding.inflate(inflater)
         binding.lifecycleOwner = viewLifecycleOwner
 
         setupViews()

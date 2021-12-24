@@ -8,20 +8,20 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.collegebuddy.ui.HomeFragment"
-        android:label="@string/title_home"
+        android:label="@string/bottom_menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.collegebuddy.ui.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_notes"
+        android:name="com.example.collegebuddy.ui.NotesFragment"
+        android:label="@string/bottom_menu_notes"
+        tools:layout="@layout/fragment_notes" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.collegebuddy.ui.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_attendance"
+        android:name="com.example.collegebuddy.ui.AttendanceFragment"
+        android:label="@string/bottom_menu_attendance"
+        tools:layout="@layout/fragment_attendance" />
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.collegebuddy.ui.ProfileFragment"

@@ -3,7 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/drawable/ic_baseline_note_24.xml" value="0.37864583333333335" />
+        <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/drawable/ic_baseline_post_add_24.xml" value="0.37864583333333335" />
+        <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.37864583333333335" />
+        <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.37864583333333335" />
+        <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.37864583333333335" />
+        <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/drawable/ic_launcher_background.xml" value="0.37864583333333335" />
         <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/layout/fragment_attendance.xml" value="0.3625" />
         <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.3625" />
         <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/layout/fragment_dashboard.xml" value="0.3625" />
         <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/layout/fragment_home.xml" value="0.3625" />
