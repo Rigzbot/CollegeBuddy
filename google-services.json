@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "404908207245",
+    "project_id": "college-buddy-fc7e4",
+    "storage_bucket": "college-buddy-fc7e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404908207245:android:81e529064ca822bdb046c4",
+        "android_client_info": {
+          "package_name": "com.example.collegebuddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "404908207245-alamqr4432dphfs75j79q971acuv5dl7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.collegebuddy",
+            "certificate_hash": "eb84a76f273792b9510949610b39966bcaf13c1a"
+          }
+        },
+        {
+          "client_id": "404908207245-sqsrkihfe1n18760p240qh6jslg6r994.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUa0NtmOCDd5yMh92_jhpofrhHEPP8TM4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "404908207245-sqsrkihfe1n18760p240qh6jslg6r994.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -41,6 +41,7 @@
             android:layout_height="72dp"
             android:layout_below="@id/register_heading"
             android:background="@drawable/bg_txt_username"
+            android:inputType="number"
             android:fontFamily="@font/montserrat_semibold"
             android:hint="@string/login_edit_text_enrollment_hint"
             android:paddingStart="60dp"
@@ -115,6 +116,7 @@
             android:textColor="@color/colorText" />
 
         <TextView
+            android:id="@+id/back_to_login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
