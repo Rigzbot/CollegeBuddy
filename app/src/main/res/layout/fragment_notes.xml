@@ -8,20 +8,29 @@
         android:layout_height="match_parent"
         tools:context=".ui.NotesFragment">
 
-        <TextView
-            android:id="@+id/text_dashboard"
+        <SearchView
+            android:id="@+id/search_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:text="This is Notes fragment"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/search_background"
+            android:iconifiedByDefault="false"
+            android:queryBackground="@null"
+            android:queryHint="Search Subject"
+            android:searchIcon="@drawable/ic_baseline_search_24"
+            android:theme="@style/ThemeOverlay.search"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_view"
+            tools:listitem="@layout/notes_subject_item" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -37,5 +46,15 @@
                 android:layout_gravity="center"
                 android:src="@drawable/img_bar" />
         </FrameLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabBtnCreateNote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:src="@drawable/ic_baseline_add_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
