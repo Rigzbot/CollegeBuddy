@@ -15,7 +15,11 @@
         android:id="@+id/navigation_notes"
         android:name="com.example.collegebuddy.ui.NotesFragment"
         android:label="@string/bottom_menu_notes"
-        tools:layout="@layout/fragment_notes" />
+        tools:layout="@layout/fragment_notes" >
+        <action
+            android:id="@+id/action_navigation_notes_to_subjectNotesFragment"
+            app:destination="@id/subjectNotesFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_attendance"
@@ -32,4 +36,12 @@
         android:name="com.example.collegebuddy.ui.SettingsFragment"
         android:label="Settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/subjectNotesFragment"
+        android:name="com.example.collegebuddy.ui.SubjectNotesFragment"
+        android:label="SubjectNotesFragment" >
+        <argument
+            android:name="subjectName"
+            app:argType="string" />
+    </fragment>
 </navigation>

@@ -6,10 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.example.collegebuddy.R
-import com.example.collegebuddy.databinding.FragmentHomeBinding
 import com.example.collegebuddy.databinding.FragmentProfileBinding
-import com.example.collegebuddy.viewModels.HomeViewModel
 import com.example.collegebuddy.viewModels.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

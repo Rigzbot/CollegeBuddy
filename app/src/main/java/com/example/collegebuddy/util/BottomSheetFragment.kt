@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.collegebuddy.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import dagger.hilt.android.AndroidEntryPoint
 
 class BottomSheetFragment: BottomSheetDialogFragment() {
 

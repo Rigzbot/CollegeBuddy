@@ -16,6 +16,7 @@
         <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/layout/activity_login.xml" value="0.33620689655172414" />
         <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/layout/content_login.xml" value="0.3625" />
+        <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/layout/custom_alert_layout.xml" value="0.3625" />
         <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/layout/fragment_attendance.xml" value="0.3625" />
         <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.3625" />
         <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/layout/fragment_dashboard.xml" value="0.3625" />
@@ -28,7 +29,9 @@
         <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/layout/fragment_register.xml" value="0.3625" />
         <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/layout/fragment_second.xml" value="0.3625" />
         <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/layout/fragment_settings.xml" value="0.3484375" />
+        <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/layout/fragment_subject_notes.xml" value="0.3625" />
         <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/layout/notes_subject_item.xml" value="0.3625" />
+        <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/layout/pdf_item.xml" value="0.3625" />
         <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/menu/action_bar_menu.xml" value="0.3625" />
         <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3625" />
         <entry key="..\:/Android Development/Kotlin Projects/CollegeBuddy/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.37864583333333335" />
