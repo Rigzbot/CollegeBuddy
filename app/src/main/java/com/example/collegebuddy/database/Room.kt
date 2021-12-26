@@ -4,6 +4,7 @@ import androidx.room.*
 import com.example.collegebuddy.domain.Subject
 import kotlinx.coroutines.flow.Flow
 
+
 @Dao
 interface SubjectsDao {
     @Query("SELECT * FROM databasesubjects")
