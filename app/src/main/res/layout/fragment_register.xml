@@ -11,6 +11,7 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_margin="16dp"
+        android:contentDescription="@string/back_button"
         android:src="@drawable/ic_baseline_arrow_back_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,8 +28,8 @@
             android:id="@+id/register_heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
             android:layout_marginStart="8dp"
+            android:layout_marginBottom="32dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/login_activity_sign_up"
             android:textSize="20sp"
@@ -40,51 +41,60 @@
             android:layout_width="match_parent"
             android:layout_height="72dp"
             android:layout_below="@id/register_heading"
+            android:autofillHints="phone"
             android:background="@drawable/bg_txt_username"
-            android:inputType="number"
             android:fontFamily="@font/montserrat_semibold"
             android:hint="@string/login_edit_text_enrollment_hint"
+            android:inputType="number"
             android:paddingStart="60dp"
             android:textColor="@color/colorText"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            tools:ignore="RtlSymmetry" />
 
         <EditText
             android:id="@+id/email_et"
             android:layout_width="match_parent"
             android:layout_height="72dp"
             android:layout_below="@id/enrollment_et"
+            android:autofillHints="emailAddress"
             android:background="@drawable/bg_txt_username"
             android:fontFamily="@font/montserrat_semibold"
             android:hint="@string/login_edit_text_email_hint"
+            android:inputType="textEmailAddress"
             android:paddingStart="60dp"
             android:textColor="@color/colorText"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            tools:ignore="RtlSymmetry" />
 
         <EditText
             android:id="@+id/password_et"
             android:layout_width="match_parent"
             android:layout_height="72dp"
             android:layout_below="@id/email_et"
+            android:autofillHints="password"
             android:background="@drawable/bg_txt_password"
             android:fontFamily="@font/montserrat_semibold"
             android:hint="@string/login_edit_text_password_hint"
             android:inputType="textPassword"
             android:paddingStart="60dp"
             android:textColor="@color/colorText"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            tools:ignore="RtlSymmetry" />
 
         <EditText
             android:id="@+id/confirm_password_et"
             android:layout_width="match_parent"
             android:layout_height="72dp"
             android:layout_below="@id/password_et"
+            android:autofillHints="password"
             android:background="@drawable/bg_txt_password"
             android:fontFamily="@font/montserrat_semibold"
             android:hint="@string/login_edit_text_confirm_password_hint"
             android:inputType="textPassword"
             android:paddingStart="60dp"
             android:textColor="@color/colorText"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            tools:ignore="RtlSymmetry" />
 
         <Button
             android:id="@+id/sign_up_button"
@@ -101,11 +111,11 @@
         android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="16dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/confirmation_tv"
@@ -120,8 +130,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:textColor="@color/purple_500"
             android:fontFamily="@font/montserrat_semibold"
-            android:text="@string/login_activity_log_in"/>
+            android:text="@string/login_activity_log_in"
+            android:textColor="@color/purple_500" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

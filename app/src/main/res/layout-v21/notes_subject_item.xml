@@ -18,6 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="8dp"
+        android:elevation="32dp"
         android:onClick="@{() -> subjectCallback.onClick(subject)}"
         app:cardCornerRadius="32dp"
         app:layout_constraintStart_toStartOf="parent"

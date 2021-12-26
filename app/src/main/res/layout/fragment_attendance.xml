@@ -15,9 +15,9 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:text="This is attendance fragment"
             android:textAlignment="center"
             android:textSize="20sp"
-            android:text="This is attendance fragment"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,6 +35,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"
+                android:contentDescription="@string/bottom_sheet_access_button"
                 android:src="@drawable/img_bar" />
         </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
