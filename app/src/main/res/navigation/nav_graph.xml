@@ -39,9 +39,22 @@
     <fragment
         android:id="@+id/subjectNotesFragment"
         android:name="com.example.collegebuddy.ui.SubjectNotesFragment"
-        android:label="SubjectNotesFragment" >
+        android:label="SubjectNotesFragment"
+        tools:layout="@layout/fragment_subject_notes">
         <argument
             android:name="subjectName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_subjectNotesFragment_to_pdfViewFragment"
+            app:destination="@id/pdfViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pdfViewFragment"
+        android:name="com.example.collegebuddy.ui.PdfViewFragment"
+        android:label="PdfViewFragment"
+        tools:layout="@layout/fragment_pdf_view">
+        <argument
+            android:name="pdfUri"
             app:argType="string" />
     </fragment>
 </navigation>

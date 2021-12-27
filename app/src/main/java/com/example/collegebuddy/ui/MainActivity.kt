@@ -5,7 +5,6 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.navigation.NavController
@@ -57,20 +56,12 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.navigation_settings || item.itemId == R.id.navigation_profile)
-            binding.bottomNav.visibility = View.GONE
-        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
-    }
-
     override fun onSupportNavigateUp(): Boolean {
-        binding.bottomNav.visibility = View.VISIBLE
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        binding.bottomNav.visibility = View.VISIBLE
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
     }
 
     private fun requestPermission() {

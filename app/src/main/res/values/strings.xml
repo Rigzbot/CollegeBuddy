@@ -30,4 +30,5 @@
     <string name="add_subject_button">Add Subject Button</string>
     <string name="back_button">Back Button</string>
     <string name="pdf_icon">pdf icon</string>
+    <string name="upload_pdf_button">Upload Pdf Button</string>
 </resources>
