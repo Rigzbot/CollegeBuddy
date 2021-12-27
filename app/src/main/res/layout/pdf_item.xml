@@ -1,65 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="8dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/pdf_image"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:scaleType="centerCrop"
-        android:contentDescription="@string/pdf_icon"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/backgrounds/scenic" />
+    <data>
+        <variable
+            name="pdf"
+            type="com.example.collegebuddy.domain.Pdf" />
 
-    <RelativeLayout
-        android:id="@+id/text_layout"
-        android:layout_width="wrap_content"
+        <variable
+            name="pdfCallback"
+            type="com.example.collegebuddy.adapters.PdfClick" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="@id/pdf_image"
-        app:layout_constraintStart_toEndOf="@id/pdf_image"
-        app:layout_constraintTop_toTopOf="parent">
+        android:onClick="@{() -> pdfCallback.onCLick(pdf)}"
+        android:layout_margin="8dp">
 
-        <TextView
-            android:id="@+id/pdf_title"
+        <ImageView
+            android:id="@+id/pdf_image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginVertical="8dp"
+            android:contentDescription="@string/pdf_icon"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/pdf" />
+
+        <RelativeLayout
+            android:id="@+id/text_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:textSize="16sp"
-            tools:text="toyota-toyota-brochure1027.pdf" />
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/pdf_image"
+            app:layout_constraintStart_toEndOf="@id/pdf_image"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/pdf_title"
+                android:layout_width="wrap_content"
+                android:text="@{pdf.name}"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:textSize="16sp"
+                tools:text="toyota-toyota-brochure1027.pdf" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pdf_title"
+                android:textSize="16sp"
+                tools:text="22 Dec 6:54 pm" />
+        </RelativeLayout>
 
         <TextView
+            android:id="@+id/pdf_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="@{pdf.size}"
+            android:layout_marginEnd="8dp"
             android:textSize="16sp"
-            android:layout_below="@id/pdf_title"
-            tools:text="22 Dec 6:54 pm" />
-    </RelativeLayout>
+            app:layout_constraintBottom_toBottomOf="@id/text_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="500 KB" />
 
-    <TextView
-        android:id="@+id/pdf_size"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:textSize="16sp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/text_layout"
-        tools:text="500 KB" />
-
-    <View
-        android:id="@+id/hr_line"
-        android:layout_width="wrap_content"
-        android:layout_height="1px"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/black"
-        app:layout_constraintStart_toEndOf="@id/pdf_image"
-        app:layout_constraintTop_toBottomOf="@id/pdf_image" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/hr_line"
+            android:layout_width="wrap_content"
+            android:layout_height="1px"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/black"
+            app:layout_constraintStart_toEndOf="@id/pdf_image"
+            app:layout_constraintTop_toBottomOf="@id/pdf_image" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

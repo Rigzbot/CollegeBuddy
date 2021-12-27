@@ -1,7 +1,6 @@
 package com.example.collegebuddy.ui
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,18 +9,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.collegebuddy.databinding.FragmentSubjectNotesBinding
-import com.example.collegebuddy.viewModels.NotesViewModel
 import android.app.Activity
-
-import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
+import androidx.lifecycle.coroutineScope
 import androidx.navigation.findNavController
-import android.provider.OpenableColumns
-
-import android.content.ContentResolver
-import android.database.Cursor
-import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.collegebuddy.adapters.PdfAdapter
+import com.example.collegebuddy.adapters.PdfClick
 import com.example.collegebuddy.viewModels.SubjectNotesViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 private const val PDF_SELECTION_CODE = 99
 
@@ -33,6 +30,8 @@ class SubjectNotesFragment : Fragment() {
     private val binding get() = _binding!!
 
     val viewModel: SubjectNotesViewModel by viewModels()
+
+    private lateinit var viewModelPdfAdapter: PdfAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,12 +45,31 @@ class SubjectNotesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setupViews()
+        observeValues()
     }
 
     private fun setupViews() {
         binding.fabAddPdf.setOnClickListener {
             selectPdfFromStorage()
+        }
+
+        viewModelPdfAdapter = PdfAdapter(PdfClick {
+            goToPdfViewer(it.pdfAddress)
+        })
+
+        binding.pdfRv.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = viewModelPdfAdapter
+        }
+    }
+
+    private fun observeValues() {
+        lifecycle.coroutineScope.launch {
+            viewModel.getPdf(args.subjectName).collect {
+                viewModelPdfAdapter.submitList(it)
+            }
         }
     }
 
@@ -68,25 +86,16 @@ class SubjectNotesFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PDF_SELECTION_CODE && resultCode == Activity.RESULT_OK && data != null) {
-            val selectedPdfFromStorage = data.data
-            goToPdfViewer(selectedPdfFromStorage)
+            val pdfUri = data.data
+            viewModel.savePdf(requireContext().contentResolver, pdfUri!!, args.subjectName)
         }
     }
 
-    private fun goToPdfViewer(uri: Uri?) {
-        val action = SubjectNotesFragmentDirections.actionSubjectNotesFragmentToPdfViewFragment(uri.toString())
+    private fun goToPdfViewer(pdfAddress: String) {
+        val action = SubjectNotesFragmentDirections.actionSubjectNotesFragmentToPdfViewFragment(pdfAddress)
         binding.root.findNavController().navigate(action)
     }
 
-    //requireContext.queryResolver
-//    private fun queryName(resolver: ContentResolver, uri: Uri): String? {
-//        val returnCursor = resolver.query(uri, null, null, null, null)!!
-//        val nameIndex = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
-//        returnCursor.moveToFirst()
-//        val name = returnCursor.getString(nameIndex)
-//        returnCursor.close()
-//        return name
-//    }
 
     override fun onDestroy() {
         super.onDestroy()

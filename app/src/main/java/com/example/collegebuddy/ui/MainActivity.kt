@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
 
-    private val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
+    private val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
     private val requestCode = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {

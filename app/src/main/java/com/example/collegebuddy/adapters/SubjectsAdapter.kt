@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.collegebuddy.adapters.SubjectsAdapter.SubjectViewHolder
+import com.example.collegebuddy.adapters.SubjectsAdapter.SubjectViewHolder.SubjectComparator
 import com.example.collegebuddy.databinding.NotesSubjectItemBinding
 import com.example.collegebuddy.domain.Subject
 
@@ -13,7 +15,7 @@ class SubjectClick(val block: (Subject) -> Unit) {
 }
 
 class SubjectsAdapter(private val callback: SubjectClick) :
-    ListAdapter<Subject, SubjectsAdapter.SubjectViewHolder>(SubjectViewHolder.SubjectComparator()) {
+    ListAdapter<Subject, SubjectViewHolder>(SubjectComparator()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubjectViewHolder {
         val binding = NotesSubjectItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
