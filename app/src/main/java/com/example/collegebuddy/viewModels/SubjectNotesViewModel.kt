@@ -69,7 +69,6 @@ class SubjectNotesViewModel @Inject constructor(
             commaOffset -= 3
         }
         if (suffix != null) resultBuffer.append(suffix)
-        Log.d("Test", resultBuffer.toString())
         return resultBuffer.toString()
     }
 }
