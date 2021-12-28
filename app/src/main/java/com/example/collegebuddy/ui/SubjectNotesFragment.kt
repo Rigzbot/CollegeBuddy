@@ -10,6 +10,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.collegebuddy.databinding.FragmentSubjectNotesBinding
 import android.app.Activity
+import android.content.ActivityNotFoundException
+import android.net.Uri
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.net.toUri
 import androidx.lifecycle.coroutineScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,8 +23,6 @@ import com.example.collegebuddy.viewModels.SubjectNotesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-
-private const val PDF_SELECTION_CODE = 99
 
 @AndroidEntryPoint
 class SubjectNotesFragment : Fragment() {
@@ -56,7 +58,7 @@ class SubjectNotesFragment : Fragment() {
         }
 
         viewModelPdfAdapter = PdfAdapter(PdfClick {
-            goToPdfViewer(it.pdfAddress)
+            openFile(it.pdfAddress)
         })
 
         binding.pdfRv.apply {
@@ -73,22 +75,19 @@ class SubjectNotesFragment : Fragment() {
         }
     }
 
+    private var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val data: Uri? = result.data?.data
+            viewModel.savePdf(requireContext().contentResolver, data!!, args.subjectName)
+        }
+    }
+
     private fun selectPdfFromStorage() {
-        val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
             addCategory(Intent.CATEGORY_OPENABLE)
             type = "application/pdf"
         }
-        startActivityForResult(
-            Intent.createChooser(intent, "Select PDF"), PDF_SELECTION_CODE
-        )
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == PDF_SELECTION_CODE && resultCode == Activity.RESULT_OK && data != null) {
-            val pdfUri = data.data
-            viewModel.savePdf(requireContext().contentResolver, pdfUri!!, args.subjectName)
-        }
+        resultLauncher.launch(intent)
     }
 
     private fun goToPdfViewer(pdfAddress: String) {
@@ -96,6 +95,18 @@ class SubjectNotesFragment : Fragment() {
         binding.root.findNavController().navigate(action)
     }
 
+    private fun openFile(path: String) {
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            setDataAndType(path.toUri(), "application/pdf")
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+
+        try {
+            startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            goToPdfViewer(path)
+        }
+    }
 
     override fun onDestroy() {
         super.onDestroy()
