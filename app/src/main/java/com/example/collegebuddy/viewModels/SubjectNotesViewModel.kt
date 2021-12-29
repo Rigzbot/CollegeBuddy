@@ -37,11 +37,21 @@ class SubjectNotesViewModel @Inject constructor(
 
     fun getPdf(subject: String): Flow<List<Pdf>> = pdfDao.getPdf(subject)
 
-    fun deletePdf(pdfList: List<String>) {
+    fun deletePdf() {
         viewModelScope.launch {
-            for(pdf in pdfList){
-                pdfDao.deletePdf(pdf)
-            }
+            pdfDao.deletePdf()
+        }
+    }
+
+    fun updateSelected(pdfAddress: String) {
+        viewModelScope.launch {
+            pdfDao.updateSelection(pdfAddress)
+        }
+    }
+
+    fun deselectAll() {
+        viewModelScope.launch {
+            pdfDao.deselectAll()
         }
     }
 

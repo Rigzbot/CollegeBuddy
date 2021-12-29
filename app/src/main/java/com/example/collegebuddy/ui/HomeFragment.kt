@@ -11,7 +11,6 @@ import com.example.collegebuddy.util.BottomSheetFragment
 import com.example.collegebuddy.viewModels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null

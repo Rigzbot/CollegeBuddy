@@ -10,7 +10,6 @@ import com.example.collegebuddy.databinding.FragmentProfileBinding
 import com.example.collegebuddy.viewModels.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding ?= null

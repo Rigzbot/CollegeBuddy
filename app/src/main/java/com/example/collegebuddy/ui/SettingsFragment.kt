@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import com.example.collegebuddy.databinding.FragmentSettingsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding?= null

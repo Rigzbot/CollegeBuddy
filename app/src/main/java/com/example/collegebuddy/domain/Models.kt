@@ -6,7 +6,8 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "databasesubjects")
 data class Subject(
     @PrimaryKey
-    val name: String
+    val name: String,
+    val isSelected: Boolean = false
 )
 
 @Entity(tableName = "databasepdf")
@@ -15,5 +16,6 @@ data class Pdf(
     val pdfAddress: String,
     val name: String,
     val size: String,
-    val subject: String
+    val subject: String,
+    val isSelected: Boolean = false
 )

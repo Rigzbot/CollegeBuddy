@@ -11,7 +11,6 @@ import com.example.collegebuddy.util.BottomSheetFragment
 import com.example.collegebuddy.viewModels.AttendanceViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class AttendanceFragment : Fragment() {
 
     private var _binding: FragmentAttendanceBinding? = null

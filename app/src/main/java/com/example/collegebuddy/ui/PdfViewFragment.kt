@@ -12,7 +12,6 @@ import com.example.collegebuddy.databinding.FragmentPdfViewBinding
 import com.example.collegebuddy.viewModels.NotesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class PdfViewFragment: Fragment() {
     private val args: PdfViewFragmentArgs by navArgs()
 

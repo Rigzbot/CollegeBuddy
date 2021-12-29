@@ -1,9 +1,6 @@
 package com.example.collegebuddy.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.collegebuddy.adapters.SubjectsAdapter
@@ -14,12 +11,14 @@ import dagger.hilt.android.AndroidEntryPoint
 import android.widget.EditText
 import com.example.collegebuddy.R
 import android.text.TextUtils
+import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.coroutineScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.collegebuddy.adapters.SubjectClick
+import com.example.collegebuddy.adapters.SubjectLongClick
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -32,6 +31,7 @@ class NotesFragment : Fragment() {
     private val viewModel: NotesViewModel by viewModels()
 
     private lateinit var viewModelSubjectAdapter: SubjectsAdapter
+    private var actionMode: ActionMode? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +40,7 @@ class NotesFragment : Fragment() {
     ): View {
         _binding = FragmentNotesBinding.inflate(inflater)
         binding.lifecycleOwner = viewLifecycleOwner
+        viewModel.deselectAll()
 
         return binding.root
     }
@@ -59,11 +60,63 @@ class NotesFragment : Fragment() {
         }
     }
 
+    private val actionModelCallBack: ActionMode.Callback = object : ActionMode.Callback {
+        var dialogCalled: Boolean = false
+        override fun onCreateActionMode(mode: ActionMode?, menu: Menu?): Boolean {
+            requireActivity().menuInflater.inflate(R.menu.action_bar_delete, menu)
+            return true
+        }
+
+        override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?): Boolean {
+            return false
+        }
+
+        override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?): Boolean {
+            if (item!!.itemId == R.id.action_delete) {
+                confirmDeletion()
+                dialogCalled = true
+                actionMode!!.finish()
+                return true
+            }
+            return false
+        }
+
+        override fun onDestroyActionMode(mode: ActionMode?) {
+            if (!dialogCalled)
+                viewModel.deselectAll()
+            actionMode = null
+        }
+    }
+
+    private fun confirmDeletion() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Confirm Delete")
+            .setMessage("Deleting this folder(s) will also delete all the Pdf's inside it. Are you sure you would like to delete it?")
+            .setIcon(android.R.drawable.ic_dialog_alert)
+            .setPositiveButton(getString(R.string.alert_dialog_yes)) { _, _ ->
+                viewModel.deleteSubjects()
+            }
+            .setNegativeButton(getString(R.string.alert_dialog_cancel)) { _, _ ->
+                viewModel.deselectAll()
+                actionMode = null
+            }.show()
+    }
+
     private fun setupViews() {
         viewModelSubjectAdapter = SubjectsAdapter(SubjectClick {
-            val action =
-                NotesFragmentDirections.actionNavigationNotesToSubjectNotesFragment(it.name)
-            binding.root.findNavController().navigate(action)
+            if (actionMode != null) {
+                viewModel.updateSelected(it.name)
+            } else {
+                val action =
+                    NotesFragmentDirections.actionNavigationNotesToSubjectNotesFragment(it.name)
+                binding.root.findNavController().navigate(action)
+            }
+        }, SubjectLongClick {
+            if (actionMode == null) {
+                actionMode = requireActivity().startActionMode(actionModelCallBack)
+            }
+
+            viewModel.updateSelected(it.name)
         })
 
         binding.bottomSheetButton.setOnClickListener {
@@ -108,6 +161,7 @@ class NotesFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        actionMode?.finish()
         _binding = null
     }
 }

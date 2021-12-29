@@ -17,11 +17,13 @@ object AppModule {
     @Singleton
     fun provideSubjectsDatabase(app: Application): SubjectsDatabase =
         Room.databaseBuilder(app, SubjectsDatabase::class.java, "subjects_database")
+            .fallbackToDestructiveMigration()
             .build()
 
     @Provides
     @Singleton
     fun providePdfDatabase(app: Application): PdfDatabase =
         Room.databaseBuilder(app, PdfDatabase::class.java, "pdf_database")
+            .fallbackToDestructiveMigration()
             .build()
 }

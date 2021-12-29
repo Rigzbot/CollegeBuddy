@@ -11,12 +11,17 @@
         <variable
             name="pdfCallback"
             type="com.example.collegebuddy.adapters.PdfClick" />
+
+        <variable
+            name="pdfLongCallback"
+            type="com.example.collegebuddy.adapters.PdfLongClick" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="@{() -> pdfCallback.onCLick(pdf)}"
+        android:onLongClick="@{() -> pdfLongCallback.onLongClick(pdf)}"
         android:layout_margin="8dp">
 
         <ImageView

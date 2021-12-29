@@ -8,7 +8,7 @@ import com.example.collegebuddy.ui.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
+
 class LoginActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
 
