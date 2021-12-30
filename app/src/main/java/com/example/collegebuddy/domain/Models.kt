@@ -19,3 +19,14 @@ data class Pdf(
     val subject: String,
     val isSelected: Boolean = false
 )
+
+data class User(
+    val enrolmentNumber: String,
+    val email: String,
+    val name: String
+)
+
+data class Attendance(
+    val total: String,
+    val attended: String
+)

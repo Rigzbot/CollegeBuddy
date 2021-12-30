@@ -52,11 +52,26 @@
             tools:ignore="RtlSymmetry" />
 
         <EditText
-            android:id="@+id/email_et"
+            android:id="@+id/name_et"
             android:layout_width="match_parent"
             android:layout_height="72dp"
             android:layout_below="@id/enrollment_et"
             android:autofillHints="emailAddress"
+            android:background="@drawable/bg_txt_username"
+            android:fontFamily="@font/montserrat_semibold"
+            android:hint="@string/login_edit_text_name_hint"
+            android:inputType="textEmailAddress"
+            android:paddingStart="60dp"
+            android:textColor="@color/colorText"
+            android:textSize="16sp"
+            tools:ignore="RtlSymmetry" />
+
+        <EditText
+            android:id="@+id/email_et"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_below="@id/name_et"
+            android:autofillHints="password"
             android:background="@drawable/bg_txt_username"
             android:fontFamily="@font/montserrat_semibold"
             android:hint="@string/login_edit_text_email_hint"
@@ -81,26 +96,11 @@
             android:textSize="16sp"
             tools:ignore="RtlSymmetry" />
 
-        <EditText
-            android:id="@+id/confirm_password_et"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:layout_below="@id/password_et"
-            android:autofillHints="password"
-            android:background="@drawable/bg_txt_password"
-            android:fontFamily="@font/montserrat_semibold"
-            android:hint="@string/login_edit_text_confirm_password_hint"
-            android:inputType="textPassword"
-            android:paddingStart="60dp"
-            android:textColor="@color/colorText"
-            android:textSize="16sp"
-            tools:ignore="RtlSymmetry" />
-
         <Button
             android:id="@+id/sign_up_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/confirm_password_et"
+            android:layout_below="@id/password_et"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
             android:paddingHorizontal="24dp"

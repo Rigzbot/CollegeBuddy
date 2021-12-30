@@ -67,6 +67,7 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:29.0.3')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-database-ktx'
 
     //Multidex
     implementation 'androidx.multidex:multidex:2.0.1'
@@ -78,4 +79,7 @@ dependencies {
 
     //PDF Viewer
     implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+
+    //Preference Manager
+    implementation 'androidx.preference:preference:1.1.1'
 }

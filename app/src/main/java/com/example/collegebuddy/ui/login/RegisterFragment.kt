@@ -9,8 +9,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.findNavController
 import com.example.collegebuddy.databinding.FragmentRegisterBinding
+import com.example.collegebuddy.domain.User
+import com.example.collegebuddy.util.SavedPreference
 import com.google.firebase.auth.FirebaseAuth
-import dagger.hilt.android.AndroidEntryPoint
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import org.w3c.dom.Text
 
 class RegisterFragment : Fragment() {
 
@@ -18,6 +22,7 @@ class RegisterFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var dbReference: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +31,9 @@ class RegisterFragment : Fragment() {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
 
         mAuth = FirebaseAuth.getInstance()
+        dbReference =
+            FirebaseDatabase.getInstance("https://college-buddy-fc7e4-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference("users")
         return binding.root
     }
 
@@ -56,22 +64,22 @@ class RegisterFragment : Fragment() {
     private fun registerUser() {
         val email = binding.emailEt.text.toString()
         val password = binding.passwordEt.text.toString()
-        val confirmPassword = binding.confirmPasswordEt.text.toString()
+        val name = binding.nameEt.text.toString()
+        val enrolmentNumber = binding.enrollmentEt.text.toString()
 
-        if(password != confirmPassword) {
-            Toast.makeText(context, "Passwords entered do not match, Please try again.", Toast.LENGTH_LONG).show()
-            binding.passwordEt.text.clear()
-            binding.confirmPasswordEt.text.clear()
-            return
-        }
-
-        if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password)){
+        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password) ||
+            TextUtils.isEmpty(enrolmentNumber) || TextUtils.isEmpty(name)
+        ) {
             Toast.makeText(context, "Please enter all values.", Toast.LENGTH_SHORT).show()
             return
         }
 
-        if(password.length < 6){
-            Toast.makeText(context, "Password length cannot be shorter than 6 characters", Toast.LENGTH_LONG).show()
+        if (password.length < 6) {
+            Toast.makeText(
+                context,
+                "Password length cannot be shorter than 6 characters",
+                Toast.LENGTH_LONG
+            ).show()
             return
         }
 
@@ -81,9 +89,15 @@ class RegisterFragment : Fragment() {
                     Toast.makeText(context, "Registration Successful", Toast.LENGTH_SHORT).show()
                     goToLoginFragment()
                 } else {
-                    Toast.makeText(context, task.exception?.localizedMessage, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, task.exception?.localizedMessage, Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
+
+        val user = User(enrolmentNumber, email, name)
+        dbReference.child(enrolmentNumber).setValue(user)
+
+        SavedPreference.setEnrolment(requireContext(), enrolmentNumber)
     }
 
     override fun onDestroyView() {

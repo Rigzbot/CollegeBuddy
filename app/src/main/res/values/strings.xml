@@ -20,8 +20,8 @@
     <string name="login_fragment_tagline">The best college assistant</string>
     <string name="login_edit_text_enrollment_hint">Enrollment Number</string>
     <string name="login_edit_text_email_hint">Email</string>
+    <string name="login_edit_text_name_hint">Name</string>
     <string name="login_edit_text_password_hint">Password</string>
-    <string name="login_edit_text_confirm_password_hint">Confirm Password</string>
     <string name="login_fragment_forgot_password">Forgot Password?</string>
     <string name="login_activity_log_in">Log in</string>
     <string name="login_fragment_create_account">Don\'t have an account?</string>
@@ -36,4 +36,7 @@
     <string name="back_button">Back Button</string>
     <string name="pdf_icon">pdf icon</string>
     <string name="upload_pdf_button">Upload Pdf Button</string>
+
+    <!-- Fragment Notes -->
+    <string name="fragment_notes_text_view_heading">Your Subjects</string>
 </resources>
