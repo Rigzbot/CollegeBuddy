@@ -39,12 +39,15 @@
 
     <!-- Fragment Notes -->
     <string name="fragment_notes_text_view_heading">Your Subjects</string>
+    <string name="fragment_notes_add_subject_hint">There are no subjects currently. Add subjects using plus button</string>
+
+    <!-- Fragment Attendance -->
     <string name="fragment_attendance_title">Attendance</string>
     <string name="fragment_attendance_text_view_total_classes">Today\'s Classes</string>
     <string name="fragment_attendance_text_view_classes_attended">Classes Attended</string>
     <string name="fragment_attendance_submit_button">SUBMIT</string>
     <string name="fragment_attendance_summary_title">Summary</string>
 
-    <!-- Fragment Attendance -->
-
+    <!-- Fragment Subject Notes -->
+    <string name="fragment_subject_notes_add_pdf_hint">There are no Pdf\'s currently. Add pdf using upload button</string>
 </resources>

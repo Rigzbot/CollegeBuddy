@@ -1,6 +1,5 @@
 package com.example.collegebuddy.viewModels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,6 +21,9 @@ class AttendanceViewModel : ViewModel() {
 
     private val _totalClasses = MutableLiveData<String>()
     val totalClasses: LiveData<String> get() = _totalClasses
+
+    private val _isUpdated = MutableLiveData<Boolean>(false)
+    val isUpdated: LiveData<Boolean> get() = _isUpdated
 
     var enrolmentNumber: String ?= null
 
@@ -45,11 +47,17 @@ class AttendanceViewModel : ViewModel() {
         }
     }
 
+    fun changeIsUpdated() {
+        _isUpdated.value = !isUpdated.value!!
+    }
+
     fun updateAttendance(enrolment: String, attended: String, total: String) {
         val newAttended = _classesAttended.value?.toInt()?.plus(attended.toInt())
         val newTotal = _totalClasses.value?.toInt()?.plus(total.toInt())
 
-        database.child(enrolment).setValue(Attendance(newTotal.toString(), newAttended.toString()))
+        database.child(enrolment).setValue(Attendance(newTotal.toString(), newAttended.toString())).addOnCompleteListener {
+            _isUpdated.value = true
+        }
 
         _classesAttended.value = newAttended.toString()
         _totalClasses.value = newTotal.toString()

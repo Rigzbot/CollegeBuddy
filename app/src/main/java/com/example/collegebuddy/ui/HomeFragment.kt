@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import com.example.collegebuddy.databinding.FragmentHomeBinding
 import com.example.collegebuddy.util.BottomSheetFragment
 import com.example.collegebuddy.viewModels.HomeViewModel
-import dagger.hilt.android.AndroidEntryPoint
 
 class HomeFragment : Fragment() {
 

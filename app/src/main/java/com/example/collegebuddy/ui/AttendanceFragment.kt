@@ -27,11 +27,29 @@ class AttendanceFragment : Fragment() {
     ): View {
         _binding = FragmentAttendanceBinding.inflate(inflater)
         binding.lifecycleOwner = viewLifecycleOwner
+
         viewModel.enrolmentNumber = SavedPreference.getEnrolment(requireContext())
         viewModel.getAttendanceValues()
 
-        setupViews()
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setupViews()
+        observeValues()
+    }
+
+    private fun observeValues() {
+        viewModel.isUpdated.observe(viewLifecycleOwner, {
+            if(it) {
+                Toast.makeText(context, "Attendance Successfully Updated!", Toast.LENGTH_SHORT).show()
+                binding.totalClassesEt.text?.clear()
+                binding.attendedClassesEt.text?.clear()
+                viewModel.changeIsUpdated()
+            }
+        })
     }
 
     private fun setupViews() {
@@ -53,11 +71,26 @@ class AttendanceFragment : Fragment() {
         val attended = binding.attendedClassesEt.text.toString()
         val total = binding.totalClassesEt.text.toString()
 
-        if(TextUtils.isEmpty(attended) || TextUtils.isEmpty(total)){
+        if (total.toInt() < attended.toInt()) {
+            Toast.makeText(
+                context,
+                "Attended classes cannot be greater than total classes. Please enter again",
+                Toast.LENGTH_LONG
+            ).show()
+            binding.attendedClassesEt.text?.clear()
+            binding.totalClassesEt.text?.clear()
+            return
+        }
+
+        if (TextUtils.isEmpty(attended) || TextUtils.isEmpty(total)) {
             Toast.makeText(context, "Please enter both values", Toast.LENGTH_SHORT).show()
             return
         }
-        viewModel.updateAttendance(SavedPreference.getEnrolment(requireContext())!!, attended, total)
+        viewModel.updateAttendance(
+            SavedPreference.getEnrolment(requireContext())!!,
+            attended,
+            total
+        )
     }
 
     override fun onDestroyView() {

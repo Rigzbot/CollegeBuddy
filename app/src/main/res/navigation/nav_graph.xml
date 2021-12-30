@@ -39,7 +39,7 @@
     <fragment
         android:id="@+id/subjectNotesFragment"
         android:name="com.example.collegebuddy.ui.SubjectNotesFragment"
-        android:label="SubjectNotesFragment"
+        android:label="Your Pdf's"
         tools:layout="@layout/fragment_subject_notes">
         <argument
             android:name="subjectName"

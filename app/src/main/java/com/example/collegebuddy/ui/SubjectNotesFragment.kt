@@ -10,7 +10,6 @@ import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.net.Uri
 import android.view.*
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.net.toUri
@@ -88,7 +87,6 @@ class SubjectNotesFragment : Fragment() {
         AlertDialog.Builder(requireContext())
             .setTitle("Confirm Delete")
             .setMessage("Are you sure you would like to delete the selected Pdf(s)?")
-            .setIcon(android.R.drawable.ic_dialog_alert)
             .setPositiveButton(getString(R.string.alert_dialog_yes)) { _, _ ->
                 viewModel.deletePdf()
             }
@@ -127,6 +125,8 @@ class SubjectNotesFragment : Fragment() {
         lifecycle.coroutineScope.launch {
             viewModel.getPdf(args.subjectName).collect {
                 viewModelPdfAdapter.submitList(it)
+                binding.addPdfHint.visibility =
+                    if (!it.isNullOrEmpty()) View.GONE else View.VISIBLE
             }
         }
     }

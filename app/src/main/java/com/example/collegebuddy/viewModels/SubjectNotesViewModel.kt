@@ -1,9 +1,12 @@
 package com.example.collegebuddy.viewModels
 
+import android.app.Activity
 import android.content.ContentResolver
+import android.content.Intent
 import android.net.Uri
 import android.provider.OpenableColumns
 import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.collegebuddy.database.PdfDatabase

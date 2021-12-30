@@ -52,14 +52,6 @@ class NotesFragment : Fragment() {
         observeValues()
     }
 
-    private fun observeValues() {
-        lifecycle.coroutineScope.launch {
-            viewModel.getSubjects().collect {
-                viewModelSubjectAdapter.submitList(it)
-            }
-        }
-    }
-
     private val actionModelCallBack: ActionMode.Callback = object : ActionMode.Callback {
         var dialogCalled: Boolean = false
         override fun onCreateActionMode(mode: ActionMode?, menu: Menu?): Boolean {
@@ -92,7 +84,6 @@ class NotesFragment : Fragment() {
         AlertDialog.Builder(requireContext())
             .setTitle("Confirm Delete")
             .setMessage("Deleting this folder(s) will also delete all the Pdf's inside it. Are you sure you would like to delete it?")
-            .setIcon(android.R.drawable.ic_dialog_alert)
             .setPositiveButton(getString(R.string.alert_dialog_yes)) { _, _ ->
                 viewModel.deleteSubjects()
             }
@@ -100,6 +91,16 @@ class NotesFragment : Fragment() {
                 viewModel.deselectAll()
                 actionMode = null
             }.show()
+    }
+
+    private fun observeValues() {
+        lifecycle.coroutineScope.launch {
+            viewModel.getSubjects().collect {
+                viewModelSubjectAdapter.submitList(it)
+                binding.addSubjectHint.visibility =
+                    if (!it.isNullOrEmpty()) View.GONE else View.VISIBLE
+            }
+        }
     }
 
     private fun setupViews() {
@@ -115,7 +116,6 @@ class NotesFragment : Fragment() {
             if (actionMode == null) {
                 actionMode = requireActivity().startActionMode(actionModelCallBack)
             }
-
             viewModel.updateSelected(it.name)
         })
 
