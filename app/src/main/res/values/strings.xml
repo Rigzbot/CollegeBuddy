@@ -50,4 +50,5 @@
 
     <!-- Fragment Subject Notes -->
     <string name="fragment_subject_notes_add_pdf_hint">There are no Pdf\'s currently. Add pdf using upload button</string>
+    <string name="fragment_home_time_table_title">Time Table</string>
 </resources>
