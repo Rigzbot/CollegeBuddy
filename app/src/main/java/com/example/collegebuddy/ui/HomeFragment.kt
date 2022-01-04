@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -33,8 +32,7 @@ class HomeFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         val imageAddress = SavedPreference.getImage(requireContext())
-        if(!imageAddress.isNullOrEmpty())
-            showButtons()
+        viewModel.updateTTAddress(imageAddress!!.toUri())
 
         return binding.root
     }
@@ -48,6 +46,10 @@ class HomeFragment : Fragment() {
 
     private fun observeValues() {
         viewModel.ttAddress.observe(viewLifecycleOwner, {
+            if(it == "".toUri())
+                fabVisible()
+            else
+                fabHidden()
             binding.ttImage.setImageURI(it)
         })
     }
@@ -70,13 +72,13 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun showButtons() {
+    private fun fabVisible() {
         binding.deleteTt.visibility = View.GONE
         binding.fabAddTt.visibility = View.VISIBLE
         binding.addTtHint.visibility = View.VISIBLE
     }
 
-    private fun hideButtons() {
+    private fun fabHidden() {
         binding.deleteTt.visibility = View.VISIBLE
         binding.fabAddTt.visibility = View.GONE
         binding.addTtHint.visibility = View.GONE
@@ -89,7 +91,6 @@ class HomeFragment : Fragment() {
             .setPositiveButton(getString(R.string.alert_dialog_yes)) { _, _ ->
                 SavedPreference.setImage(requireContext(), "")
                 viewModel.updateTTAddress("".toUri())
-                showButtons()
             }
             .setNegativeButton(getString(R.string.alert_dialog_cancel), null).show()
     }
@@ -99,7 +100,6 @@ class HomeFragment : Fragment() {
             val data: Uri? = result.data?.data
             SavedPreference.setImage(requireContext(), data.toString())
             viewModel.updateTTAddress(data!!)
-            hideButtons()
         }
     }
 
