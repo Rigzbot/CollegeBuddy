@@ -32,11 +32,6 @@
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
-        android:id="@+id/navigation_settings"
-        android:name="com.example.collegebuddy.ui.SettingsFragment"
-        android:label="Settings"
-        tools:layout="@layout/fragment_settings" />
-    <fragment
         android:id="@+id/subjectNotesFragment"
         android:name="com.example.collegebuddy.ui.SubjectNotesFragment"
         android:label="Your Pdf's"

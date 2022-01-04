@@ -14,4 +14,8 @@
     <color name="colorPrimaryDark">#FFDD00</color>
     <color name="colorAccent">#FBB034</color>
     <color name="colorText">#504F60</color>
+
+    <!-- Pie Chart Colors -->
+    <color name="absent">#EF5350</color>
+    <color name="present">#29B6F6</color>
 </resources>

@@ -27,6 +27,6 @@ data class User(
 )
 
 data class Attendance(
-    val total: String,
+    val absent: String,
     val attended: String
 )

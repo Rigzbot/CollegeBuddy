@@ -1,5 +1,6 @@
 package com.example.collegebuddy.ui
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import com.example.collegebuddy.databinding.FragmentAttendanceBinding
 import com.example.collegebuddy.util.BottomSheetFragment
 import com.example.collegebuddy.util.SavedPreference
 import com.example.collegebuddy.viewModels.AttendanceViewModel
+import org.eazegraph.lib.models.PieModel
 
 class AttendanceFragment : Fragment() {
 
@@ -43,12 +45,42 @@ class AttendanceFragment : Fragment() {
 
     private fun observeValues() {
         viewModel.isUpdated.observe(viewLifecycleOwner, {
-            if(it) {
-                Toast.makeText(context, "Attendance Successfully Updated!", Toast.LENGTH_SHORT).show()
+            if (it) {
+                Toast.makeText(context, "Attendance Successfully Updated!", Toast.LENGTH_SHORT)
+                    .show()
                 binding.totalClassesEt.text?.clear()
                 binding.attendedClassesEt.text?.clear()
                 viewModel.changeIsUpdated()
             }
+        })
+
+        viewModel.classesAttended.observe(viewLifecycleOwner, {
+            val attendance = if (!it.isNullOrEmpty()) {
+                it.toFloat()
+            } else {
+                0F
+            }
+            binding.pieChart.addPieSlice(
+                PieModel(
+                    "Present", attendance,
+                    Color.parseColor("#29B6F6")
+                )
+            )
+            binding.pieChart.startAnimation()
+        })
+
+        viewModel.classesAbsent.observe(viewLifecycleOwner, {
+            val absent = if (!it.isNullOrEmpty()) {
+                it.toFloat()
+            } else {
+                0F
+            }
+            binding.pieChart.addPieSlice(
+                PieModel(
+                    "Absent", absent,
+                    Color.parseColor("#EF5350")
+                )
+            )
         })
     }
 
@@ -65,6 +97,8 @@ class AttendanceFragment : Fragment() {
         binding.submitButton.setOnClickListener {
             updateAttendance()
         }
+
+        binding.pieChart.startAnimation()
     }
 
     private fun updateAttendance() {
@@ -86,10 +120,11 @@ class AttendanceFragment : Fragment() {
             Toast.makeText(context, "Please enter both values", Toast.LENGTH_SHORT).show()
             return
         }
+
         viewModel.updateAttendance(
             SavedPreference.getEnrolment(requireContext())!!,
             attended,
-            total
+            (total.toInt() - attended.toInt()).toString()
         )
     }
 

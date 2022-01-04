@@ -47,6 +47,9 @@
     <string name="fragment_attendance_text_view_classes_attended">Classes Attended</string>
     <string name="fragment_attendance_submit_button">SUBMIT</string>
     <string name="fragment_attendance_summary_title">Summary</string>
+    <string name="fragment_attendance_summary_pie_chart_absent">Absent</string>
+    <string name="fragment_attendance_summary_pie_chart_present">Present</string>
+    <string name="fragment_attendance_summary_percentage_title">Attendance Percentage:</string>
 
     <!-- Fragment Subject Notes -->
     <string name="fragment_subject_notes_add_pdf_hint">There are no Pdf\'s currently. Add pdf using upload button</string>
