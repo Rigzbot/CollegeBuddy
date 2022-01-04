@@ -76,7 +76,7 @@ Of course, no app is perfect as everyone's needs may be different. So I'll be ad
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+There were multiple technologies used to build this project. These are the major ones used.
 
 * [Native Android](https://developer.android.com/docs)
 * [Kotlin](https://kotlinlang.org/docs/home.html)
@@ -103,8 +103,8 @@ Fork and clone repository in your local storage to start contributing.
 ### Prerequisites
 
 <ol>
-  <li>Android Studio should be installed.</li>
-  <li>Latest version of Java JDK should be installed.</li>
+  <li>Android Studio.</li>
+  <li>Latest version of Java JDK.</li>
 </ol>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
