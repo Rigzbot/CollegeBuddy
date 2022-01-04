@@ -83,6 +83,8 @@ There were multiple technologies used to build this project. These are the major
 * [Firebase](https://firebase.google.com/?gclid=Cj0KCQiA_c-OBhDFARIsAIFg3ewrS-_4ATzMPwQXlBeXUXNyLrrMZQCLnsqVC1UMxUOuVku3qFvTKLUaAqTVEALw_wcB&gclsrc=aw.ds)
 * [Room](https://developer.android.com/training/data-storage/room)
 * [Material-Design](https://material.io/design)
+* [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
+* [MVVM Architecture](https://developer.android.com/jetpack/guide)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
