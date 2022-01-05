@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -28,12 +28,31 @@
         </FrameLayout>
 
         <ImageView
+            android:id="@+id/id_card_image"
             android:layout_width="match_parent"
+            android:layout_below="@id/bottom_sheet_button_layout"
             android:layout_height="240dp"
             android:scaleType="centerCrop"
             android:src="@drawable/sampleidcard"
             app:layout_constraintStart_toStartOf="parent"
             android:contentDescription="@string/id_card_image"
             app:layout_constraintTop_toBottomOf="@id/bottom_sheet_button_layout" />
-    </LinearLayout>
+
+        <ImageView
+            android:id="@+id/delete_id_card"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_below="@id/id_card_image"
+            android:src="@drawable/ic_baseline_delete_24"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"/>
+
+        <Button
+            android:id="@+id/upload_id_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bottom_sheet_upload_card_button_hint"
+            android:layout_centerInParent="true"
+            android:visibility="visible" />
+    </RelativeLayout>
 </layout>

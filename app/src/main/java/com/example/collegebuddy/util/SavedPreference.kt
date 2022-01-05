@@ -6,6 +6,7 @@ import androidx.preference.PreferenceManager
 
 private const val ENROLMENT = "enrolment"
 private const val IMAGE = "image"
+private const val ID_CARD = "idCard"
 
 object SavedPreference {
     private fun getSharedPreference(ctx: Context?): SharedPreferences? {
@@ -37,4 +38,14 @@ object SavedPreference {
     }
 
     fun getImage(context: Context) = getSharedPreference(context)?.getString(IMAGE, "")
+
+    fun setIdCard(context: Context, idCard: String) {
+        editor(
+            context,
+            ID_CARD,
+            idCard
+        )
+    }
+
+    fun getIdCard(context: Context) = getSharedPreference(context)?.getString(ID_CARD, "")
 }
