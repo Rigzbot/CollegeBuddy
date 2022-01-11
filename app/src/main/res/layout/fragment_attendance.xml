@@ -8,168 +8,178 @@
         android:layout_height="match_parent"
         tools:context=".ui.AttendanceFragment">
 
-        <TextView
-            android:id="@+id/attendance_title_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="12dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/fragment_attendance_title"
-            android:textColor="@color/colorText"
-            android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           app:layout_constraintBottom_toTopOf="@id/bottom_view"
+           app:layout_constraintTop_toTopOf="parent"
+           android:id="@+id/attd_layout">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/total_classes_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:hint="@string/fragment_attendance_text_view_total_classes"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/attendance_title_tv">
+           <TextView
+               android:id="@+id/attendance_title_tv"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="16dp"
+               android:layout_marginTop="16dp"
+               android:layout_marginEnd="12dp"
+               android:fontFamily="@font/montserrat_bold"
+               android:text="@string/fragment_attendance_title"
+               android:textColor="@color/colorText"
+               android:textSize="24sp"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/total_classes_et"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
+           <com.google.android.material.textfield.TextInputLayout
+               android:id="@+id/total_classes_layout"
+               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="16dp"
+               android:hint="@string/fragment_attendance_text_view_total_classes"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@id/attendance_title_tv">
 
-        </com.google.android.material.textfield.TextInputLayout>
+               <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/total_classes_et"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:inputType="number" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/attended_classes_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:hint="@string/fragment_attendance_text_view_classes_attended"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/total_classes_layout">
+           </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/attended_classes_et"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
+           <com.google.android.material.textfield.TextInputLayout
+               android:id="@+id/attended_classes_layout"
+               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="16dp"
+               android:hint="@string/fragment_attendance_text_view_classes_attended"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@id/total_classes_layout">
 
-        </com.google.android.material.textfield.TextInputLayout>
+               <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/attended_classes_et"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:inputType="number" />
 
-        <Button
-            android:id="@+id/submit_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:padding="14dp"
-            android:text="@string/fragment_attendance_submit_button"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/attended_classes_layout" />
+           </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/attendance_summary_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="12dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/fragment_attendance_summary_title"
-            android:textColor="@color/colorText"
-            android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/submit_button" />
+           <Button
+               android:id="@+id/submit_button"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="16dp"
+               android:padding="14dp"
+               android:text="@string/fragment_attendance_submit_button"
+               android:textSize="16sp"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@id/attended_classes_layout" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:layout_margin="16dp"
-            android:elevation="32dp"
-            app:cardCornerRadius="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/attendance_summary_tv">
+           <TextView
+               android:id="@+id/attendance_summary_tv"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="16dp"
+               android:layout_marginTop="32dp"
+               android:layout_marginEnd="12dp"
+               android:fontFamily="@font/montserrat_bold"
+               android:text="@string/fragment_attendance_summary_title"
+               android:textColor="@color/colorText"
+               android:textSize="24sp"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@id/submit_button" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:padding="8dp"
-                android:weightSum="1">
+           <androidx.cardview.widget.CardView
+               android:layout_width="match_parent"
+               android:layout_height="180dp"
+               android:layout_margin="16dp"
+               android:elevation="32dp"
+               app:cardCornerRadius="16dp"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@id/attendance_summary_tv">
 
-                <org.eazegraph.lib.charts.PieChart
-                    android:id="@+id/pie_chart"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:padding="24dp"
-                    android:layout_weight="0.5" />
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:orientation="horizontal"
+                   android:padding="8dp"
+                   android:weightSum="1">
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="0.5"
-                    android:orientation="vertical">
+                   <org.eazegraph.lib.charts.PieChart
+                       android:id="@+id/pie_chart"
+                       android:layout_width="0dp"
+                       android:layout_height="match_parent"
+                       android:padding="24dp"
+                       android:layout_weight="0.5" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="8dp">
+                   <LinearLayout
+                       android:layout_width="0dp"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center"
+                       android:layout_weight="0.5"
+                       android:orientation="vertical">
 
-                        <View
-                            android:layout_width="18dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/absent" />
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_gravity="center_vertical"
+                           android:layout_margin="8dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:fontFamily="@font/montserrat_semibold"
-                            android:text="@string/fragment_attendance_summary_pie_chart_absent" />
-                    </LinearLayout>
+                           <View
+                               android:layout_width="18dp"
+                               android:layout_height="match_parent"
+                               android:background="@color/absent" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="8dp">
+                           <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:layout_marginStart="8dp"
+                               android:fontFamily="@font/montserrat_semibold"
+                               android:text="@string/fragment_attendance_summary_pie_chart_absent" />
+                       </LinearLayout>
 
-                        <View
-                            android:layout_width="18dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/present" />
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_gravity="center_vertical"
+                           android:layout_margin="8dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:fontFamily="@font/montserrat_semibold"
-                            android:text="@string/fragment_attendance_summary_pie_chart_present" />
-                    </LinearLayout>
+                           <View
+                               android:layout_width="18dp"
+                               android:layout_height="match_parent"
+                               android:background="@color/present" />
 
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="8dp"-->
-<!--                        android:layout_marginTop="8dp"-->
-<!--                        android:text="@string/fragment_attendance_summary_percentage_title" />-->
+                           <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:layout_marginStart="8dp"
+                               android:fontFamily="@font/montserrat_semibold"
+                               android:text="@string/fragment_attendance_summary_pie_chart_present" />
+                       </LinearLayout>
 
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="8dp"-->
-<!--                        android:layout_marginTop="4dp"-->
-<!--                        android:textStyle="bold"-->
-<!--                        tools:text="75%" />-->
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                       <!--                    <TextView-->
+                       <!--                        android:layout_width="wrap_content"-->
+                       <!--                        android:layout_height="wrap_content"-->
+                       <!--                        android:layout_marginStart="8dp"-->
+                       <!--                        android:layout_marginTop="8dp"-->
+                       <!--                        android:text="@string/fragment_attendance_summary_percentage_title" />-->
+
+                       <!--                    <TextView-->
+                       <!--                        android:layout_width="wrap_content"-->
+                       <!--                        android:layout_height="wrap_content"-->
+                       <!--                        android:layout_marginStart="8dp"-->
+                       <!--                        android:layout_marginTop="4dp"-->
+                       <!--                        android:textStyle="bold"-->
+                       <!--                        tools:text="75%" />-->
+                   </LinearLayout>
+               </LinearLayout>
+           </androidx.cardview.widget.CardView>
+
+       </androidx.constraintlayout.widget.ConstraintLayout>
 
         <FrameLayout
+            android:id="@+id/bottom_view"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_alignParentBottom="true"
@@ -184,5 +194,7 @@
                 android:contentDescription="@string/bottom_sheet_access_button"
                 android:src="@drawable/img_bar" />
         </FrameLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
