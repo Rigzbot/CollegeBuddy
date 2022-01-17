@@ -14,59 +14,88 @@
         android:layout_height="match_parent"
         tools:context=".ui.HomeFragment">
 
-        <TextView
-            android:id="@+id/time_table_title_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="12dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/fragment_home_time_table_title"
-            android:textColor="@color/colorText"
-            android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.jsibbold.zoomage.ZoomageView
-            android:id="@+id/tt_image"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_margin="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/time_table_title_tv"
-            app:zoomage_animateOnReset="true"
-            app:zoomage_autoCenter="true"
-            app:zoomage_autoResetMode="UNDER"
-            app:zoomage_maxScale="8"
-            app:zoomage_minScale="0.6"
-            app:zoomage_restrictBounds="false"
-            app:zoomage_translatable="true"
-            android:scaleType="fitCenter"
-            tools:src="@tools:sample/backgrounds/scenic"
-            app:zoomage_zoomable="true" />
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_view"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:text="@{viewModel.currentDayOfWeek}"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tt_image"
-            tools:text="Monday"
-            android:fontFamily="@font/montserrat_semibold"
-            android:layout_marginStart="16dp"
-            android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/time_table_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="12dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/fragment_home_time_table_title"
+                android:textColor="@color/colorText"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/delete_tt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tt_image"
-            android:src="@drawable/ic_baseline_delete_24"
-            android:layout_marginEnd="16dp" />
+            <com.jsibbold.zoomage.ZoomageView
+                android:id="@+id/tt_image"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_margin="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/time_table_title_tv"
+                app:zoomage_animateOnReset="true"
+                app:zoomage_autoCenter="true"
+                app:zoomage_autoResetMode="UNDER"
+                app:zoomage_maxScale="8"
+                app:zoomage_minScale="0.6"
+                app:zoomage_restrictBounds="false"
+                app:zoomage_translatable="true"
+                android:scaleType="fitCenter"
+                tools:src="@tools:sample/backgrounds/scenic"
+                app:zoomage_zoomable="true" />
+
+            <TextView
+                android:text="@{viewModel.currentDayOfWeek}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tt_image"
+                tools:text="Monday"
+                android:fontFamily="@font/montserrat_semibold"
+                android:layout_marginStart="16dp"
+                android:textSize="16sp"/>
+
+            <ImageView
+                android:id="@+id/delete_tt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tt_image"
+                android:src="@drawable/ic_baseline_delete_24"
+                android:layout_marginEnd="16dp" />
+
+
+
+            <TextView
+                android:id="@+id/add_tt_hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:gravity="center"
+                android:text="There is no timetable currently. Upload your time table using the button below"
+                android:textColor="@color/gray"
+                android:visibility="gone"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <FrameLayout
+            android:id="@+id/bottom_view"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_alignParentBottom="true"
@@ -81,22 +110,6 @@
                 android:contentDescription="@string/bottom_sheet_access_button"
                 android:src="@drawable/img_bar" />
         </FrameLayout>
-
-        <TextView
-            android:id="@+id/add_tt_hint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:fontFamily="@font/montserrat_semibold"
-            android:gravity="center"
-            android:text="There is no timetable currently. Upload your time table using the button below"
-            android:textColor="@color/gray"
-            android:visibility="gone"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_add_tt"
             android:layout_width="wrap_content"
@@ -107,5 +120,6 @@
             android:src="@drawable/ic_baseline_upload_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
